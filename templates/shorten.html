@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortened URL</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            background-image: url('{{ url_for('static', filename='bg.jpeg') }}');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <a href="/about" class="about-button">About Me</a>
+    <div class="container">
+        <h1 class="header">Your shortened URL:</h1>
+        <p><a href="{{ url_for('redirect_to_url', short_url=short_url) }}" class="shortened-url">{{ url_for('redirect_to_url', short_url=short_url) }}</a></p>
+        <a href="/" class="button">Shorten Another Link</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.1"></script>
+    <script src="{{ url_for('static', filename='confetti.js') }}"></script>
+
+</body>
+</html>
