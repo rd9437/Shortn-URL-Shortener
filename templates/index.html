@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            background-image: url('https://t4.ftcdn.net/jpg/05/76/03/43/360_F_576034335_6maCZj8Taw5aXYanz3pYvZZwCaWHcbzK.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">URL Shortener</h1>
+        <form action="/shorten" method="POST" class="form">
+            <label for="url" class="label"></label>
+            <input type="text" id="url" name="url" class="input" placeholder="Enter your URL">
+            <button type="submit" class="button">Shorten</button>
+        </form>
+    </div>
+</body>
+</html>
