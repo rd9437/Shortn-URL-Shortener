@@ -1,7 +1,8 @@
 # URL Shortener Web App
 
-https://rd9437.pythonanywhere.com/
+[![Live Demo](https://img.shields.io/badge/Live-Demo-green?style=for-the-badge)](https://rd9437.pythonanywhere.com/)
 
+---
 This is a simple URL shortener web application built using Flask. It allows users to shorten long URLs into shorter, more manageable ones.
 
 ## Features
