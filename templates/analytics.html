@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shortn | Analytics - {{ url.short_url }}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen p-6 text-gray-800">
+  <h1 class="text-2xl font-bold mb-4">📈 Analytics for {{ url.short_url }}</h1>
+
+  <p class="mb-2"><strong>Original URL:</strong> {{ url.original_url }}</p>
+  <p class="mb-4"><strong>Total Visits:</strong> {{ url.visit_count }}</p>
+
+  <!-- Chart Placeholder -->
+  <div class="w-full bg-white shadow p-6 rounded">
+    <p class="text-gray-600">Chart coming soon... 📊</p>
+  </div>
+
+  <a href="/dashboard" class="inline-block mt-6 text-blue-600 underline">← Back to dashboard</a>
+
+  <footer class="absolute bottom-4 left-0 w-full flex justify-center">
+    <p class="text-white text-sm">
+      &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | By 
+      <a href="https://rudransh.tech" target="_blank" rel="noopener noreferrer" class="underline hover:text-indigo-200">
+        Rudransh Das
+      </a>
+      &nbsp;|&nbsp;
+      <a href="https://linktr.ee/rudranshly" target="_blank" rel="noopener noreferrer" class="underline hover:text-indigo-200">
+        ly
+      </a>
+    </p>
+  </footer>
+</body>
+</html>

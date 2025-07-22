@@ -1,67 +1,127 @@
-# URL Shortener Web App
+# 🔗 Shortn — URL Shortener Web App
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-green?style=for-the-badge)](https://rd9437.pythonanywhere.com/)
+[🌐 Live Demo »](https://rd9437.pythonanywhere.com/)
+
+**Shortn** is a clean, beginner-friendly URL shortener web app built with **Flask**. It allows users to create and manage short, trackable URLs — with or without an account.
 
 ---
-This is a simple URL shortener web application built using Flask. It allows users to shorten long URLs into shorter, more manageable ones.
 
-## Features
+## ✨ Features
 
-+ Shorten long URLs into short, easy-to-share links.
-+ Redirect users to the original long URL when they visit the shortened link.
-+ Minimalistic user interface for easy use.
+- 🔗 Instantly shorten long URLs
+- 📥 Redirect users to the original link when a short URL is visited
+- 📈 Track total clicks per URL (logged-in users only)
+- 📸 Generate a QR Code for every shortened link
+- 📊 View per-link analytics via a personal dashboard
+- 👤 Optional user accounts for dashboard access
+- ❌ Delete account if you forget your password — no recovery needed
+- 🎉 Confetti animation on successful shortening (because why not?)
 
-## Setup
+---
 
-To run this web application locally, follow these steps:
+## 🧠 Why Use Shortn?
 
-1. Clone this repository to your local machine:
-   ```
-   git clone https://github.com/rd9437/url-shortener.git
-   ```
-2. Navigate to the project directory:
-   ```
-   cd url-shortener
-   ```
-3. Install the required dependencies using pip:
-   ```
-   pip install -r requirements.txt
-   ```
-4. Run the Flask application:
-   ```
-   python app.py
-   ```
-   Open your web browser and visit http://localhost:5000 to access the web application.
+You **don’t need an account** to shorten links.
 
+However, if you create one, you get:
 
-## About the Source Code
+- A private dashboard with your shortened links
+- Click tracking stats
+- QR code previews
+- The ability to delete your account anytime
 
-### Project Structure
+---
 
-The source code for this project is organized as follows:
+## 🚀 Getting Started
 
-+ **app.py**: Contains the main Flask application code, including route definitions and URL handling logic.
-+ **templates/**: Directory containing HTML templates used by the Flask application for rendering web pages.
-+ **static/**: Directory containing static files such as CSS stylesheets, JavaScript files, and images.
-+ **confetti.js**: JavaScript file responsible for triggering the confetti animation on the shorten.html page.
-+ **styles.css**: CSS stylesheet defining the styles for the HTML templates.
+To run Shortn locally:
 
-### Dependencies
+### 1. Clone the repository:
 
-+ **Flask**: A micro web framework for Python used to build the web application.
-+ **canvas-confetti**: JavaScript library for creating confetti animations.
+```bash
+git clone https://github.com/rd9437/url-shortener.git
+cd url-shortener
+```
 
-### How It Works
+### 2. Install dependencies:
 
-+ The Flask application (`app.py`) handles incoming HTTP requests and serves HTML templates located in the `templates` directory.
-+ When a user submits a URL through the form on the landing page (`index.html`), the Flask application generates a shortened URL and renders the `shorten.html` page with the shortened URL.
-+ The confetti animation on the `shorten.html` page is triggered by the `confetti.js` JavaScript file when the page loads.
-+ Users can click on the "Shorten Another Link" button to return to the landing page and shorten another URL.
+```bash
+pip install -r requirements.txt
+```
 
-## Support
-If you encounter any issues or have questions regarding the Resume Builder, please don't hesitate to reach out to me for assistance.
+### 3. Run the Flask app:
 
-https://rd9437.pythonanywhere.com/
+```bash
+python app.py
+```
+
+Visit [http://localhost:5000](http://localhost:5000) in your browser.
+
+---
+
+## 🗂️ Project Structure
+
+```
+.
+├── app.py                # Main Flask application
+├── requirements.txt      # Python dependencies
+├── static/               # Static files (CSS, JS, images)
+│   ├── styles.css
+│   └── confetti.js
+├── templates/            # HTML templates
+│   ├── index.html
+│   ├── shorten.html
+│   ├── dashboard.html
+│   ├── login.html
+│   ├── register.html
+│   └── analytics.html
+└── README.md
+```
+
+---
+
+## 🛠️ Tech Stack
+
+- **Flask** — Python web framework
+- **Flask-Login** — User authentication
+- **Flask-SQLAlchemy** — Database ORM
+- **Tailwind CSS** — Modern utility-first CSS
+- **canvas-confetti** — Fun confetti animation
+
+---
+
+## 💡 How It Works
+
+- Enter a long URL and get a short, shareable link.
+- If you’re logged in, your links are saved to your dashboard.
+- Each link has a QR code and click analytics.
+- No password recovery: if you forget your password, just delete your account and start fresh.
+
+---
+
+## 🙋 FAQ
+
+**Q: Do I need an account to use Shortn?**  
+A: No! Anyone can shorten links. Accounts are only needed for dashboards and analytics.
+
+**Q: Can I reset my password?**  
+A: No. For privacy and simplicity, password reset is not available. You can delete your account and create a new one.
+
+**Q: Is my data private?**  
+A: Yes. Only you can see your dashboard and links when logged in.
+
+---
+
+## 📬 Support
+
+Have questions or suggestions?  
+Open an issue or reach out via [rudransh.tech](https://rudransh.tech).
+
+---
+
+## © License
+
+&copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | By [Rudransh Das](https://rudransh.tech)
 
 
 

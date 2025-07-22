@@ -1,33 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shortened URL</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <style>
-        body {
-            background-image: url('{{ url_for('static', filename='bg.jpeg') }}');
-            background-size: cover;
-            background-position: center;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>URL Shortened!</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
-<body>
-    <a href="/about" class="about-button">About Me</a>
-    <div class="container">
-        <h1 class="header">Your shortened URL:</h1>
-        <p><a href="{{ url_for('redirect_to_url', short_url=short_url) }}" class="shortened-url">{{ url_for('redirect_to_url', short_url=short_url) }}</a></p>
-        <a href="/" class="button">Shorten Another Link</a>
-    </div>
+<body class="bg-gradient-to-br from-green-400 to-blue-500 min-h-screen flex items-center justify-center text-white font-sans" onload="celebrate()">
 
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.1"></script>
-    <script src="{{ url_for('static', filename='confetti.js') }}"></script>
+  <header class="absolute top-4 left-1/2 transform -translate-x-1/2 z-50">
+    <h1 class="text-2xl font-bold text-white tracking-wide">🔗 Shortn</h1>
+  </header>
 
+  <div class="bg-white text-gray-900 rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
+    <h1 class="text-3xl font-bold mb-4">🎉 Your Short URL</h1>
+    <p class="text-lg">Here’s your new link:</p>
+    <a
+      href="/{{ short_url }}"
+      class="block mt-4 text-indigo-600 font-semibold underline break-all"
+      target="_blank"
+    >
+      {{ request.host_url }}{{ short_url }}
+    </a>
+
+    <img 
+        src="https://api.qrserver.com/v1/create-qr-code/?data={{ request.host_url }}{{ short_url }}&size=150x150"
+        alt="QR Code"
+        class="mx-auto mt-6 border rounded-lg"
+    />
+
+    <p class="mt-2 text-sm text-gray-600">
+      Visits:
+      {% if is_new %}
+        <em>refresh to update</em>
+      {% else %}
+        {{ visit_count }}
+      {% endif %}
+    </p>
+
+    <button
+      onclick="window.location.href='/'"
+      class="mt-6 bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg transition duration-300"
+    >
+      Shorten Another Link
+    </button>
+
+    {% if current_user.is_authenticated %}
+      <a href="/dashboard" class="text-indigo-500 underline text-sm mt-4 block">View your dashboard</a>
+    {% else %}
+      <p class="text-sm text-gray-600 mt-4">
+        Want to view stats for your links?
+        <a href="/login" class="underline text-indigo-500">Log in</a>
+        or
+        <a href="/register" class="underline text-indigo-500">Sign up</a>
+      </p>
+    {% endif %}
+  </div>
+
+  <footer class="absolute bottom-4 left-0 w-full flex justify-center">
+    <p class="text-white text-sm">
+      &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | By 
+      <a href="https://rudransh.tech" target="_blank" rel="noopener noreferrer" class="underline hover:text-indigo-200">
+        Rudransh Das
+      </a>
+    </p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

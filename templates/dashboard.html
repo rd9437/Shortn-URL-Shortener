@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shortn | Your Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans min-h-screen p-8">
+  <h1 class="text-3xl font-bold mb-6">📊 Your Shortened URLs</h1>
+
+  {% if urls %}
+  <table class="w-full bg-white shadow rounded overflow-hidden">
+    <thead class="bg-gray-200">
+      <tr>
+        <th class="text-left p-3">Short URL</th>
+        <th class="text-left p-3">Original URL</th>
+        <th class="text-left p-3">Visits</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for url in urls %}
+      <tr class="border-t">
+        <td class="p-3">
+          <a href="/{{ url.short_url }}" class="text-blue-600 underline" target="_blank">
+            {{ request.host_url }}{{ url.short_url }}
+          </a>
+        </td>
+        <td class="p-3 break-all">{{ url.original_url }}</td>
+        <td class="p-3">
+          {{ url.visit_count }}
+          <div class="mt-2 space-x-2">
+            <!-- View QR Button -->
+            <button 
+              onclick="toggleQR('{{ url.short_url }}')" 
+              class="text-sm text-blue-600 underline"
+            >
+              View QR
+            </button>
+
+            <!-- View Chart Link -->
+            <a 
+              href="/analytics/{{ url.short_url }}" 
+              class="text-sm text-indigo-600 underline"
+            >
+              View Chart
+            </a>
+          </div>
+
+          <!-- QR Image (hidden by default) -->
+          <div id="qr-{{ url.short_url }}" class="mt-2 hidden">
+            <img 
+              src="https://api.qrserver.com/v1/create-qr-code/?data={{ request.host_url }}{{ url.short_url }}&size=150x150"
+              alt="QR Code"
+              class="rounded border"
+            />
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>You haven’t shortened any URLs yet.</p>
+  {% endif %}
+
+  <a href="/" class="inline-block mt-6 text-blue-600 underline">← Back to shorten</a>
+
+  <form action="/delete_account" method="POST" onsubmit="return confirm('Are you sure you want to delete your account? This cannot be undone.');">
+    <button 
+      type="submit"
+      class="mt-6 text-sm text-red-600 underline hover:text-red-800"
+    >
+      Delete My Account
+    </button>
+  </form>
+
+  <script>
+    function toggleQR(shortUrl) {
+      const qrDiv = document.getElementById("qr-" + shortUrl);
+      if (qrDiv.classList.contains("hidden")) {
+        qrDiv.classList.remove("hidden");
+      } else {
+        qrDiv.classList.add("hidden");
+      }
+    }
+  </script>
+
+  <footer class="absolute bottom-4 left-0 w-full flex justify-center">
+    <p class="text-white text-sm">
+      &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | By 
+      <a href="https://rudransh.tech" target="_blank" rel="noopener noreferrer" class="underline hover:text-indigo-200">
+        Rudransh Das
+      </a>
+    </p>
+  </footer>
+</body>
+</html>

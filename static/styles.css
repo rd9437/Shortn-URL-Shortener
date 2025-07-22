@@ -1,75 +1,18 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+.floating-icon {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 24px;
+  animation: float-slow 30s linear infinite;
+  user-select: none;
+  filter: blur(1px);
+  mix-blend-mode: overlay;
 }
 
-.container {
-    max-width: 600px;
-    margin-top: 50px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.header {
-    color: #333;
-}
-
-.label {
-    display: block;
-    margin-bottom: 5px;
-    color: #666;
-}
-
-.input {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding-left: 5px;
-}
-
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.button:hover {
-    background-color: #0056b3;
-}
-
-.shortened-url {
-    word-break: break-all;
-    color: #007bff;
-}
-
-.about-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    z-index: 9999;
-}
-
-.about-button:hover {
-    background-color: #0056b3;
+@keyframes float-slow {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-200px) rotate(360deg);
+  }
 }
