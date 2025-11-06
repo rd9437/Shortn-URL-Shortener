@@ -117,11 +117,6 @@ A: Yes. Only you can see your dashboard and links when logged in.
 Have questions or suggestions?  
 Open an issue or reach out via [rudransh.tech](https://rudransh.tech).
 
----
-
-## © License
-
-&copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | By [Rudransh Das](https://rudransh.tech)
 
 
 
